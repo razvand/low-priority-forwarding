@@ -1,0 +1,9 @@
+executable,type,meanfw,meannofw,percentageincrease
+mem-walk-no-thread-no-thrash,cache-misses,6194962,3602907,71.9434%
+mem-walk-no-thread-no-thrash,running-time,3.629597,3.709968,-2.16635%
+mem-walk-no-thread,cache-misses,585791976,566083488,3.48155%
+mem-walk-no-thread,running-time,11.60663,10.95203,5.97697%
+mem-walk-no-thrash,cache-misses,19200462,8805255,118.057%
+mem-walk-no-thrash,running-time,6.084568,5.842023,4.15173%
+mem-walk,cache-misses,5860839516,968358667,505.234%
+mem-walk,running-time,67.15599,25.75006,160.799%
