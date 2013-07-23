@@ -1,2 +1,9 @@
 Enable low priority forwarding in the Linux kernel network stack in
 order to provide CPU time slices to user space applications.
+
+TODO:
+* Measure `sleep' with forwarding enabled and forwarding not enabled.
+* Measure `ffmpeg' (media transcoding) with forwarding enabled and
+  forwarding not enabled.
+* Use MTU of 100, 200, 400, 800, 3000, 6000, 9000.
+* Limit bandwidth to 100, 250, 500 Mbit.
