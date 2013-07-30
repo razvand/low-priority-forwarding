@@ -1,0 +1,12 @@
+#!/bin/bash
+
+join -t ',' forward-enabled-results.csv no-forward-enabled-results.csv | \
+	tail -n +2 | awk -F ',' '
+		BEGIN {
+			OFS=","
+			print "executable","type","meanfw","meannofw","percentageincrease"
+		}
+		{
+			if ($2 == $8)
+				print $1, $2, $3, $9, ($3-$9)/$9*100"%";
+		}'
