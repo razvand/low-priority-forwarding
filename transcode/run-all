@@ -1,0 +1,11 @@
+#!/bin/bash
+
+num_rounds=50
+
+# Run trancode application (ffpmeg based).
+pushd ~/transcode > /dev/null 2>&1
+for i in $(seq 1 "$num_rounds"); do
+	rm *.mkv
+	perf stat -e cache-misses -a ./transcode test-video-same.mts
+done
+popd ~/trascode > /dev/null 2>&1
