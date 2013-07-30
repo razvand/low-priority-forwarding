@@ -1,0 +1,16 @@
+#!/bin/bash
+
+grep -v '^[ \t]*$' | awk -F "[ \t']+" '
+BEGIN {
+	print "executable,cachemisses,runningtime"
+}
+
+{
+	exec_file = $6
+	getline
+	gsub(",", "", $2)
+	num_cache_misses = $2
+	getline
+	time_to_run = $2
+	print exec_file "," num_cache_misses "," time_to_run
+}'
