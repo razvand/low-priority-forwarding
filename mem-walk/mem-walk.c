@@ -18,7 +18,7 @@
 #include <pthread.h>
 
 #define SIZE_IN_MB		100
-#define NUM_ROUNDS		10
+#define NUM_ROUNDS		20
 #define CACHE_LINE_SIZE		64
 #define NUM_CHUNKS(x)		(sizeof(x) / sizeof(x[0]) / CACHE_LINE_SIZE)
 
