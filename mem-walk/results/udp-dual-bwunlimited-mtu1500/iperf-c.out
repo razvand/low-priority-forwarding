@@ -1,0 +1,29 @@
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 2.0.0.2, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  4] local 1.0.0.1 port 38350 connected with 2.0.0.2 port 5001
+[  3] local 1.0.0.1 port 5001 connected with 2.0.0.2 port 47104
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0- 1.0 sec  96.6 MBytes   810 Mbits/sec
+[  3]  0.0- 1.0 sec  94.9 MBytes   796 Mbits/sec   0.015 ms 1398/69102 (2%)
+[  3]  1.0- 2.0 sec  58.4 MBytes   490 Mbits/sec   0.017 ms 27443/69102 (40%)
+[  4]  1.0- 2.0 sec  59.0 MBytes   495 Mbits/sec
+[  4]  2.0- 3.0 sec  48.5 MBytes   407 Mbits/sec
+[  3]  2.0- 3.0 sec  48.3 MBytes   405 Mbits/sec   0.020 ms 34254/68720 (50%)
+[  3]  3.0- 4.0 sec  48.5 MBytes   407 Mbits/sec   0.023 ms 34957/69524 (50%)
+[  4]  3.0- 4.0 sec  48.4 MBytes   406 Mbits/sec
+[  4]  4.0- 5.0 sec  48.5 MBytes   406 Mbits/sec
+[  3]  4.0- 5.0 sec  48.4 MBytes   406 Mbits/sec   0.021 ms 34264/68799 (50%)
+[  3]  5.0- 6.0 sec  48.4 MBytes   406 Mbits/sec   0.015 ms 34959/69491 (50%)
+[  4]  5.0- 6.0 sec  48.4 MBytes   406 Mbits/sec
+[  4]  6.0- 7.0 sec  48.4 MBytes   406 Mbits/sec
+[  3]  6.0- 7.0 sec  48.5 MBytes   407 Mbits/sec   0.016 ms 34274/68844 (50%)
+[  4]  7.0- 8.0 sec  19.5 MBytes   164 Mbits/sec
+[  3]  7.0- 8.0 sec  69.7 MBytes   584 Mbits/sec   0.025 ms 13429/63119 (21%)

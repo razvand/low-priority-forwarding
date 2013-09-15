@@ -1,0 +1,35 @@
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Client connecting to 2.0.0.2, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  5] local 1.0.0.1 port 56072 connected with 2.0.0.2 port 5001
+[  3] local 1.0.0.1 port 5001 connected with 2.0.0.2 port 36218
+[ ID] Interval       Transfer     Bandwidth
+[  5]  0.0- 1.0 sec  96.7 MBytes   812 Mbits/sec
+[  3]  0.0- 1.0 sec  92.0 MBytes   772 Mbits/sec   0.013 ms  657/66310 (0.99%)
+[  5]  1.0- 2.0 sec  96.7 MBytes   811 Mbits/sec
+[  3]  1.0- 2.0 sec  48.4 MBytes   406 Mbits/sec   0.016 ms  358/34900 (1%)
+[  5]  2.0- 3.0 sec  96.7 MBytes   811 Mbits/sec
+[  3]  2.0- 3.0 sec  47.5 MBytes   399 Mbits/sec   0.017 ms  340/34255 (0.99%)
+[  5]  3.0- 4.0 sec  96.7 MBytes   811 Mbits/sec
+[  3]  3.0- 4.0 sec  48.4 MBytes   406 Mbits/sec   0.012 ms  329/34847 (0.94%)
+[  5]  4.0- 5.0 sec  96.6 MBytes   810 Mbits/sec
+[  3]  4.0- 5.0 sec  47.8 MBytes   401 Mbits/sec   0.018 ms  341/34445 (0.99%)
+[  5]  5.0- 6.0 sec  96.9 MBytes   813 Mbits/sec
+[  3]  5.0- 6.0 sec  43.4 MBytes   364 Mbits/sec   0.014 ms  316/31296 (1%)
+[  5]  6.0- 7.0 sec  96.9 MBytes   813 Mbits/sec
+[  3]  6.0- 7.0 sec  2.97 MBytes  24.9 Mbits/sec   0.013 ms   20/ 2135 (0.94%)
+[  5]  7.0- 8.0 sec  96.2 MBytes   807 Mbits/sec
+[  3]  7.0- 8.0 sec  10.8 MBytes  90.9 Mbits/sec   0.013 ms   75/ 7803 (0.96%)
+[  5]  8.0- 9.0 sec  96.7 MBytes   811 Mbits/sec
+[  3]  8.0- 9.0 sec  7.04 MBytes  59.1 Mbits/sec   0.012 ms   47/ 5070 (0.93%)
+[  5]  9.0-10.0 sec  95.6 MBytes   802 Mbits/sec
+[  3]  9.0-10.0 sec  10.9 MBytes  91.6 Mbits/sec   0.013 ms   83/ 7875 (1.1%)
+[  5] 10.0-11.0 sec  89.9 MBytes   754 Mbits/sec
+[  3] 10.0-11.0 sec  8.42 MBytes  70.7 Mbits/sec   0.017 ms   65/ 6074 (1.1%)
