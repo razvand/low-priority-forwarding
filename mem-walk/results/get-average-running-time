@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if test $# -ne 2; then
+    echo "Usage: $0 forward-top-folder no-forward-top-folder" 1>&2
+    exit 1
+fi
+
+if ! test -d $1; then
+    echo "Arguments must be folders" 1>&2
+    exit 1
+fi
+
+if ! test -d $2; then
+    echo "Arguments must be folders" 1>&2
+    exit 1
+fi
+
+echo "bandwidth,runningtime"
+for d in $1/*/; do
+    index=$(sed 's/^.*-bw\([0-9]\+\).*$/\1/' <<<$(basename $d))
+    echo -n "$index,"
+    cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
+done | sort -n
+
+echo
+echo "bandwidth,runningtime"
+for d in $2/*/; do
+    index=$(sed 's/^.*-bw\([0-9]\+\).*$/\1/' <<<$(basename $d))
+    echo -n "$index,"
+    cat $d/no-forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
+done | sort -n
