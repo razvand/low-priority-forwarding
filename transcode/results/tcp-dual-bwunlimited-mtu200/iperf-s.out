@@ -1,0 +1,14 @@
+------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+[  4] local 2.0.0.2 port 5001 connected with 1.0.0.1 port 52298
+------------------------------------------------------------
+Client connecting to 1.0.0.1, TCP port 5001
+TCP window size:  190 KByte (default)
+------------------------------------------------------------
+[  6] local 2.0.0.2 port 39773 connected with 1.0.0.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-3149.7 sec   191 GBytes   522 Mbits/sec
+Waiting for server threads to complete. Interrupt again to force quit.
+[  6]  0.0-3149.8 sec   192 GBytes   523 Mbits/sec
