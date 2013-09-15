@@ -1,8 +1,8 @@
 #!/bin/bash
 
-num_rounds=50
+num_rounds=10
 
 # Run `sleep 30'. No actual action by user space processes.
 for i in $(seq 1 "$num_rounds"); do
-	perf stat -e cache-misses -a sleep 30
+	perf stat -e cache-misses -a sleep 60
 done
