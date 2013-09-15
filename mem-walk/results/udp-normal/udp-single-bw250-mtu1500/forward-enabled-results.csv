@@ -1,0 +1,9 @@
+executable,type,mean,min,max,sd,rsd
+mem-walk-no-thread-no-thrash,cache-misses,3949354,3817624,4086687,110781,2.80504
+mem-walk-no-thread-no-thrash,running-time,3.465286,3.189561,3.907341,0.2598108,7.49753
+mem-walk-no-thread,cache-misses,585083872,576402605,600176155,8038684,1.373937
+mem-walk-no-thread,running-time,11.13986,11.11337,11.17312,0.01767537,0.1586678
+mem-walk-no-thrash,cache-misses,23127423,19905073,27542172,2600461,11.24406
+mem-walk-no-thrash,running-time,11.5615,11.5562,11.56627,0.003546303,0.03067339
+mem-walk,cache-misses,3697656872,3378062431,4912596780,451337040,12.20603
+mem-walk,running-time,69.62298,66.12164,78.87999,3.755027,5.393373
