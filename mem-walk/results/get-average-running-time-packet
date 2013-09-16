@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if test $# -ne 2; then
+    echo "Usage: $0 forward-top-folder no-forward-value" 1>&2
+    exit 1
+fi
+
+if ! test -d $1; then
+    echo "First argument must be a folder" 1>&2
+    exit 1
+fi
+
+echo "pps,runningtime"
+for d in $1/*/; do
+    index=$(sed 's/^.*-\([0-9]\+\)pps$/\1/' <<<$(basename $d))
+    echo -n "$index,"
+    cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
+done | sort -n
+
+echo
+echo "pps,runningtime"
+for d in $1/*/; do
+    index=$(sed 's/^.*-\([0-9]\+\)pps$/\1/' <<<$(basename $d))
+    echo "$index,$2"
+done | sort -n
