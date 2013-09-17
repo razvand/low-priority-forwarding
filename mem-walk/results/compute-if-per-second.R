@@ -18,6 +18,11 @@ for (i in unique(iface_list_initial))
 	rx_bytes_list <- d2$rx_bytes
 	tx_bytes_list <- d2$tx_bytes
 
-	x <- data.frame(iface = iface, rx_pkts = diff(rx_pkts_list), tx_pkts = diff(tx_pkts_list), rx_bytes = diff(rx_bytes_list), tx_bytes = diff(tx_bytes_list))
+	rx_pkts_per_second = diff(rx_pkts_list) / diff(date_list) * 1000
+	tx_pkts_per_second = diff(rx_pkts_list) / diff(date_list) * 1000
+	rx_bytes_per_second = diff(rx_bytes_list) / diff(date_list) * 1000
+	tx_bytes_per_second = diff(tx_bytes_list) / diff(date_list) * 1000
+
+	x <- data.frame(iface = iface, rx_pkts = rx_pkts_per_second, tx_pkts = tx_pkts_per_second, rx_bytes = rx_bytes_per_second, tx_bytes = tx_bytes_per_second)
 	write.table(x, quote = FALSE, sep = ",", col.names = FALSE, row.names = FALSE)
 }
