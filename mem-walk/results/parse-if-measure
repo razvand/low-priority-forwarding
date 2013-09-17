@@ -42,7 +42,7 @@ grep 'milliseconds\|Link encap\|packet\|bytes' | \
         }
 
         /^ +TX packets:/ {
-            rx_pkts = $4
+            tx_pkts = $4
         }
 
         /^ +RX bytes:/ {
