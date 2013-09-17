@@ -1,0 +1,52 @@
+#!/bin/bash
+
+grep 'milliseconds\|Link encap\|packet\|bytes' | \
+    awk -F '[ \t:]+' '
+        BEGIN {
+            date = 0
+            iface = "zz"
+            rx_pkts = 0
+            tx_pkts = 0
+            rx_bytes = 0
+            tx_bytes = 0
+
+            at_start = 0
+            iface_read = 0
+            OFS = ","
+
+            print "date,iface,rx_pkts,tx_pkts,rx_bytes,tx_bytes"
+        }
+
+        function print_data_line()
+        {
+            print date,iface,rx_pkts,tx_pkts,rx_bytes,tx_bytes
+        }
+
+        /^[0-9]+ milliseconds/ {
+            if (at_start != 0)
+                print_data_line()
+            date = $1
+            at_start = 1
+            iface_read = 0
+        }
+
+        /^[a-zA-Z]/ {
+            if (iface_read == 1)
+                print_data_line()
+            iface = $1
+            iface_read = 1
+        }
+
+        /^ +RX packets:/ {
+            rx_pkts = $4
+        }
+
+        /^ +TX packets:/ {
+            rx_pkts = $4
+        }
+
+        /^ +RX bytes:/ {
+            rx_bytes = $4
+            tx_bytes = $9
+        }
+        '
