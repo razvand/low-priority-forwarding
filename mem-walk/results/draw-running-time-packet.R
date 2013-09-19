@@ -16,6 +16,8 @@ rt2 <- rep(as.integer(no_fw_speed), length(rt))
 mn <- min(rt,rt2)
 mx <- max(rt,rt2)
 
+pdf(paste(exp_name, "-", exp_subname, ".pdf", sep=""))
+
 plot(pps, rt, type = "b", xlab = "Kilopackets per second (Kpps)", ylab = "Running Time (seconds)", col = "red", xaxt="n", ylim=c(mn-5,mx+5))
 axis(1, at=pps, labels=sprintf("%d", pps/1000))
 
@@ -33,5 +35,7 @@ lines(pps, rt2, type = "b", col = "blue", ylim=c(0,220))
 title(main=paste(exp_name, "Running Time"), sub=exp_subname)
 
 legend("topleft", c("forward", "no-forward"), fill=c('red', 'blue'))
+
+invisible(dev.off())
 
 q()
