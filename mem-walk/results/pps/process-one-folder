@@ -6,6 +6,7 @@ if test $# -ne 1; then
 fi
 
 for d in $1/*; do
+    ../parse-pktgen < $d/pktgen-eth2.out > $d/pktgen-eth2.res
     ../parse-perf < $d/forward-enabled-perf.out > $d/forward-enabled-perf.csv
     ../parse-if-measure < $d/if-measure-c1.out > $d/c1-if-measure.csv
     ../parse-if-measure < $d/if-measure-c2.out > $d/c2-if-measure.csv
@@ -65,10 +66,11 @@ done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-end.csv
 
 (
-echo "pktsize,runningtime"
+echo "pktsize,pps,runningtime"
 for d in $1/pktsize*-unlimitedpps/; do
     index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
-    echo -n "$index,"
+    pps=$(cat $d/pktgen-eth2.res)
+    echo -n "$index,$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
 done | sort -g
 ) > mem-walk-pps-$(basename $1)-unlimited-fw-rt.csv
