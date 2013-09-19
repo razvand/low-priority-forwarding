@@ -115,5 +115,5 @@ for d in $1/pktsize*-unlimitedpps/; do
 done | sort -g
 ) > transcode-pps-$(basename $1)-unlimited-fw-rt-end.csv
 
-Rscript do-graphics-packet-set-pktsize.R transcode-pps $1-pktsize60 50
-Rscript do-graphics-packet-set-unlimited.R transcode-pps $1-unlimited 50
+Rscript do-graphics-packet-set-pktsize.R transcode-pps $1-pktsize60 104.9
+Rscript do-graphics-packet-set-unlimited.R transcode-pps $1-unlimited 104.9
