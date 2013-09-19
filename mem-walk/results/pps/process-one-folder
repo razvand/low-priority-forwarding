@@ -25,7 +25,7 @@ for d in $1/pktsize60-[0-9]*/; do
     index=$(sed 's/^.*-\([0-9]\+\)pps$/\1/' <<<$(basename $d))
     echo -n "$index,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
-done | sort -n
+done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt.csv
 
 (
@@ -34,7 +34,7 @@ for d in $1/pktsize60-[0-9]*/; do
     pps=$(cat $d/c1-if-avg.csv | awk -F ',' '/avg-eth2/ {print $3;}')
     echo -n "$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
-done | sort -n
+done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-start.csv
 
 (
@@ -43,7 +43,7 @@ for d in $1/pktsize60-[0-9]*/; do
     pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth11/ {print $2;}')
     echo -n "$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
-done | sort -n
+done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-fw-in.csv
 
 (
@@ -52,7 +52,7 @@ for d in $1/pktsize60-[0-9]*/; do
     pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth8/ {print $3;}')
     echo -n "$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
-done | sort -n
+done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-fw-out.csv
 
 (
@@ -61,7 +61,7 @@ for d in $1/pktsize60-[0-9]*/; do
     pps=$(cat $d/c3-if-avg.csv | awk -F ',' '/avg-eth7/ {print $2;}')
     echo -n "$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
-done | sort -n
+done | sort -g
 ) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-end.csv
 
 (
