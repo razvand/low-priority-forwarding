@@ -1,1 +1,4 @@
-Fatal error: cannot open file '../compute-if-avg.R': No such file or directory
+iface,rx_pkts,tx_pkts,rx_bytes,tx_bytes
+avg-eth0,3.613433,3.950474,582.2241,1277.64
+avg-eth2,1.033152,844198.3,158.1333,108057379
+avg-lo,0,0,0,0
