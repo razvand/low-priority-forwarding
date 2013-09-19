@@ -1,0 +1,119 @@
+#!/bin/bash
+
+if test $# -ne 1; then
+    echo "Usage: $0 folder-name" 1>&2
+    exit 1
+fi
+
+for d in $1/*; do
+    ../parse-pktgen < $d/pktgen-eth2.out > $d/pktgen-eth2.res
+    ../parse-perf < $d/forward-enabled-perf.out > $d/forward-enabled-perf.csv
+    ../parse-if-measure < $d/if-measure-c1.out > $d/c1-if-measure.csv
+    ../parse-if-measure < $d/if-measure-c2.out > $d/c2-if-measure.csv
+    ../parse-if-measure < $d/if-measure-c3.out > $d/c3-if-measure.csv
+    Rscript ../compute-if-per-second.R $d/c1-if-measure.csv > $d/c1-if-per-second.csv
+    Rscript ../compute-if-per-second.R $d/c2-if-measure.csv > $d/c2-if-per-second.csv
+    Rscript ../compute-if-per-second.R $d/c3-if-measure.csv > $d/c3-if-per-second.csv
+    Rscript ../compute-if-avg.R $d/c1-if-per-second.csv > $d/c1-if-avg.csv
+    Rscript ../compute-if-avg.R $d/c2-if-per-second.csv > $d/c2-if-avg.csv
+    Rscript ../compute-if-avg.R $d/c3-if-per-second.csv > $d/c3-if-avg.csv
+    Rscript ../compute-avg-min-max.R $d/forward-enabled-perf.csv > $d/forward-enabled-results.csv
+done
+
+(
+echo "pps,runningtime"
+for d in $1/pktsize60-[0-9]*/; do
+    index=$(sed 's/^.*-\([0-9]\+\)pps$/\1/' <<<$(basename $d))
+    echo -n "$index,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-pktsize60-fw-rt.csv
+
+(
+echo "pps,runningtime"
+for d in $1/pktsize60-[0-9]*/; do
+    pps=$(cat $d/c1-if-avg.csv | awk -F ',' '/avg-eth2/ {print $3;}')
+    echo -n "$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-pktsize60-fw-rt-start.csv
+
+(
+echo "pps,runningtime"
+for d in $1/pktsize60-[0-9]*/; do
+    pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth11/ {print $2;}')
+    echo -n "$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-pktsize60-fw-rt-fw-in.csv
+
+(
+echo "pps,runningtime"
+for d in $1/pktsize60-[0-9]*/; do
+    pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth8/ {print $3;}')
+    echo -n "$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-pktsize60-fw-rt-fw-out.csv
+
+(
+echo "pps,runningtime"
+for d in $1/pktsize60-[0-9]*/; do
+    pps=$(cat $d/c3-if-avg.csv | awk -F ',' '/avg-eth7/ {print $2;}')
+    echo -n "$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-pktsize60-fw-rt-end.csv
+
+(
+echo "pktsize,pps,runningtime"
+for d in $1/pktsize*-unlimitedpps/; do
+    index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
+    pps=$(cat $d/pktgen-eth2.res)
+    echo -n "$index,$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-unlimited-fw-rt.csv
+
+(
+echo "pktsize,pps,runningtime"
+for d in $1/pktsize*-unlimitedpps/; do
+    index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
+    pps=$(cat $d/c1-if-avg.csv | awk -F ',' '/avg-eth2/ {print $3;}')
+    echo -n "$index,$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-unlimited-fw-rt-start.csv
+
+(
+echo "pktsize,pps,runningtime"
+for d in $1/pktsize*-unlimitedpps/; do
+    index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
+    pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth11/ {print $2;}')
+    echo -n "$index,$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-unlimited-fw-rt-fw-in.csv
+
+(
+echo "pktsize,pps,runningtime"
+for d in $1/pktsize*-unlimitedpps/; do
+    index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
+    pps=$(cat $d/c2-if-avg.csv | awk -F ',' '/avg-eth8/ {print $3;}')
+    echo -n "$index,$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-unlimited-fw-rt-fw-out.csv
+
+(
+echo "pktsize,pps,runningtime"
+for d in $1/pktsize*-unlimitedpps/; do
+    index=$(sed 's/pktsize\([0-9]\+\)-.*$/\1/' <<<$(basename $d))
+    pps=$(cat $d/c3-if-avg.csv | awk -F ',' '/avg-eth7/ {print $2;}')
+    echo -n "$index,$pps,"
+    cat $d/forward-enabled-results.csv | grep 'transcode,running-time' | cut -d ',' -f 3
+done | sort -g
+) > transcode-pps-$(basename $1)-unlimited-fw-rt-end.csv
+
+Rscript do-graphics-packet-set-pktsize.R transcode-pps $1-pktsize60 50
+Rscript do-graphics-packet-set-unlimited.R transcode-pps $1-unlimited 50
