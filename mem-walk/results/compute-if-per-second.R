@@ -19,7 +19,7 @@ for (i in unique(iface_list_initial))
 	tx_bytes_list <- d2$tx_bytes
 
 	rx_pkts_per_second = diff(rx_pkts_list) / diff(date_list) * 1000
-	tx_pkts_per_second = diff(rx_pkts_list) / diff(date_list) * 1000
+	tx_pkts_per_second = diff(tx_pkts_list) / diff(date_list) * 1000
 	rx_bytes_per_second = diff(rx_bytes_list) / diff(date_list) * 1000
 	tx_bytes_per_second = diff(tx_bytes_list) / diff(date_list) * 1000
 
