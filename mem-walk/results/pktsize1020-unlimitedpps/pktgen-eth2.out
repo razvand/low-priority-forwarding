@@ -1,0 +1,20 @@
+Params: count 0  min_pkt_size: 1020  max_pkt_size: 1020
+     frags: 0  delay: 0  clone_skb: 10  ifname: eth2
+     flows: 0 flowlen: 0
+     queue_map_min: 0  queue_map_max: 0
+     dst_min: 2.0.0.2  dst_max: 
+        src_min:   src_max: 
+     src_mac: 40:f2:e9:01:23:14 dst_mac: 40:f2:e9:01:23:00
+     udp_src_min: 9  udp_src_max: 9  udp_dst_min: 9  udp_dst_max: 9
+     src_mac_count: 0  dst_mac_count: 0
+     Flags: 
+Current:
+     pkts-sofar: 110362819  errors: 0
+     started: 5156075010us  stopped: 6077863713us idle: 133090us
+     seq_num: 110362820  cur_dst_mac_offset: 0  cur_src_mac_offset: 0
+     cur_saddr: 1.0.0.1  cur_daddr: 2.0.0.2
+     cur_udp_dst: 9  cur_udp_src: 9
+     cur_queue_map: 0
+     flows: 0
+Result: OK: 921788703(c921655612+d133090) usec, 110362819 (1020byte,0frags)
+  119726pps 976Mb/sec (976964160bps) errors: 0
