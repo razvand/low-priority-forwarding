@@ -35,7 +35,7 @@ for d in $1/pktsize60-[0-9]*/; do
     echo -n "$pps,"
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
 done | sort -n
-) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-start-out.csv
+) > mem-walk-pps-$(basename $1)-pktsize60-fw-rt-start.csv
 
 (
 echo "pps,runningtime"
