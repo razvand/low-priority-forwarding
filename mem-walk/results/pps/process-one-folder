@@ -114,3 +114,6 @@ for d in $1/pktsize*-unlimitedpps/; do
     cat $d/forward-enabled-results.csv | grep 'mem-walk,running-time' | cut -d ',' -f 3
 done | sort -g
 ) > mem-walk-pps-$(basename $1)-unlimited-fw-rt-end.csv
+
+Rscript do-graphics-packet-set-pktsize.R mem-walk-pps $1-pktsize60 50
+Rscript do-graphics-packet-set-unlimited.R mem-walk-pps $1-unlimited 50
