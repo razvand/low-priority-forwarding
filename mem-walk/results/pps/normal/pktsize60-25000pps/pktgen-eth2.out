@@ -9,12 +9,12 @@ Params: count 0  min_pkt_size: 60  max_pkt_size: 60
      src_mac_count: 0  dst_mac_count: 0
      Flags: 
 Current:
-     pkts-sofar: 16778323  errors: 0
-     started: 29363154012us  stopped: 30034286852us idle: 662844596us
-     seq_num: 16778324  cur_dst_mac_offset: 0  cur_src_mac_offset: 0
+     pkts-sofar: 17720103  errors: 0
+     started: 166721122014us  stopped: 167429926054us idle: 700053443us
+     seq_num: 17720104  cur_dst_mac_offset: 0  cur_src_mac_offset: 0
      cur_saddr: 1.0.0.1  cur_daddr: 2.0.0.2
      cur_udp_dst: 9  cur_udp_src: 9
      cur_queue_map: 0
      flows: 0
-Result: OK: 671132840(c8288244+d662844596) usec, 16778323 (60byte,0frags)
+Result: OK: 708804040(c8750596+d700053443) usec, 17720103 (60byte,0frags)
   25000pps 12Mb/sec (12000000bps) errors: 0
